@@ -35,6 +35,36 @@ function employeeInfo() {
         };
     });
 };
+
+function managerInfo() {
+    return inquirer.prompt([
+        {
+            type: 'input',
+            message: "What is your manager's name?",
+            name: 'name'
+        },
+        {
+            type: 'input',
+            message: "What is your manager's id?",
+            name: 'id'
+        },
+        {
+            type: 'input',
+            message: "What is your manager's email?",
+            name: 'email'
+        },
+        {
+            type: 'input',
+            message: "What is your manager's office number?",
+            name: 'number'
+        },
+    ]).then(function(answer) {
+        let manager = new Manager(answer.name, answer.id, answer.email, answer.number)
+        team.push(manager);
+
+        employeeInfo();
+    });
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
