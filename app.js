@@ -65,6 +65,35 @@ function managerInfo() {
         employeeInfo();
     });
 };
+
+function engineerInfo() {
+    return inquirer.prompt([
+        {
+            type: "input",
+            message: "what is your engineer's name?",
+            name: "name"
+        },
+        {
+            type: 'input',
+            message: "What is your engineer's ID?",
+        },
+        {
+            type: "input",
+            message: "What is your engineer's email?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your engineer's GitHub username",
+            name: "GitHub",
+        },
+    ]).then(function(answer) {
+        let engineer = new Engineer(answer.name, answer.id, answer.email, answer.GitHub)
+        team.push(engineer);
+
+        employeeInfo();
+    });
+};
 // After the user has input all employees desired, call the `render` function (required
 // above) and pass in an array containing all employee objects; the `render` function will
 // generate and return a block of HTML including templated divs for each employee!
