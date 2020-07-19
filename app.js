@@ -30,34 +30,50 @@ async function repeat() {
 }
 
 async function employee() {
-  await inquirer
-  .prompt([
-    {
-      type: "list",
-      name: "role",
-      message: "What is your role?",
-      choices: ["Manager", 'Engineer', 'Intern']
-    },
-    {
-      type: "input",
-      name: "name",
-      message: "What is your name?"
-  },
-  {
-    type: "input",
-    name: "email",
-    message: "What is your email?"
-},
-{
-    type: "input",
-    name: "id",
-    message: "What is your id?"
-}
-
-])
-.then(async res => {
-  switch (res.role) {
-    
-  }
-})
+	await inquirer
+		.prompt([
+			{
+				type: "list",
+				name: "role",
+				message: "What is your role?",
+				choices: ["Manager", "Engineer", "Intern"],
+			},
+			{
+				type: "input",
+				name: "name",
+				message: "What is your name?",
+			},
+			{
+				type: "input",
+				name: "email",
+				message: "What is your email?",
+			},
+			{
+				type: "input",
+				name: "id",
+				message: "What is your id?",
+			},
+		])
+		.then(async (res) => {
+			switch (res.role) {
+				case "Manager":
+					await inquirer
+						.prompt({
+							type: "input",
+							name: "office",
+							message: "What is your office number?",
+						})
+						.then((office) => {
+							employees.push(
+								new Manager(
+									res.name,
+									res.id,
+									res.email,
+									office.office
+								)
+							);
+						});
+					break;
+			}
+		});
 }
