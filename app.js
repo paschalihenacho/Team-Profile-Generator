@@ -75,5 +75,20 @@ async function employee() {
 						});
 					break;
 			}
-		});
+    });
+    await repeat() 
 }
+
+async function init() {
+  await employee().then(() => {
+      const html = render(employees);
+      if (!fs.existsSync(OUTPUT_DIR)) {
+          fs.mkdirSync(OUTPUT_DIR);
+      }
+      fs.writeFileSync(outputPath, html, err => {
+          if (err) throw err;
+          console.log("file successfully written")
+      })
+  })
+}
+init();
