@@ -10,3 +10,21 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
+const employees = [];
+
+async function repeat() {
+	await inquirer
+		.prompt({
+			type: "confirm",
+			name: "repeat",
+			message: "Want to add another employee?",
+			default: true,
+		})
+		.then(async (res) => {
+			if (res.repeat) {
+				await employee();
+			} else {
+				console.log("generating team page!");
+			}
+		});
+}
