@@ -55,4 +55,9 @@ async function employee() {
 }
 
 ])
+.then(async res => {
+  switch (res.role) {
+    
+  }
+})
 }
