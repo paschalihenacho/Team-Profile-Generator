@@ -1,4 +1,6 @@
 # Team Profile Generator
+# Screen Shot
+![GitHub Logo](/img/ScreenShot.png)
 
 ## Description
 
